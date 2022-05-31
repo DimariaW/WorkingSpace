@@ -53,9 +53,10 @@
 - 80% 的游戏对手为当前最新版本的参数，20%选择过去的老版本
 - 每个过去的对手有一个评估其水平的得分$q_i, i=1,2,\dots,n$, 根据$p_i \sim \exp{(q_i)}$ 采样对手，每10个iteration将当前的智能体加入对手池，得分初始化为最大值。如果当前rollout的game中，当前智能体获胜，则$q_i \leftarrow q_i - \frac{\eta}{Np_i}$ ,若智能体失败，则不更新。
 
+## training algorithm
 
-
-
+- **rollout data generation** : Actor 每30秒收集120个time step(每秒4个)的数据送到learner的memory buffer, 然后每一分钟向controller中索要最新的模型参数。
+- learner每2秒更新一次参数，这样的话，actor的参数实际上落后learner的参数32个PPO gradient step。
 
 
 
