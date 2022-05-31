@@ -83,12 +83,13 @@ $$
         消融实验验证off-policy ac的有效性，并通过replay buffer进一步增大行为分布和目标分布的差异
     </div>
 </center>
+其中1-step correction 仅对policy-gradient步做off-policy correction, 对v值估计的时候不做off-policy correction, 从中可以看出ape-x dqn这种不对v做off-policy correction的算法也是可行的。
 
 ## Conclusion
 
 - 本质就是对naive importance sampling取截断，通过增大偏差的方式减少方差
 
-- 设计算法的时候本质还是忽略了偏差
+- 设计算法的时候还是忽略了偏差。
 
 
 
